@@ -1,6 +1,7 @@
 from flask import Flask,render_template,request,jsonify
 from pusher import Pusher
 import json
+import os
 
 #creating the application
 app=Flask(__name__)
@@ -8,12 +9,12 @@ app=Flask(__name__)
 #configuring the pusher object
 
 pusher=Pusher(
-  app_id='1055113',
-  key='b8d862fbb1bede7d77fc',
-  secret='746c7c71094008a98128',
+  app_id=os.environ.get('YOUR_APP_ID'),
+  key=os.environ.get('YOUR_APP_KEY'),
+  secret=os.environ.get('YOUR_APP_SECRET'),
   cluster='mt1',
   ssl=True
-)
+) #get your own credentials from pusher.com
 
 #the app index route
 
